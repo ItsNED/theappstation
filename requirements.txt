@@ -7,3 +7,4 @@ django-imagekit
 django-jsonfield
 requests
 djangorestframework
+django-el-pagination
