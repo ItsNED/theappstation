@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import GamePortfolio, MarketingPortfolio
 
-# Register your models here.
+@admin.register(GamePortfolio)
+class GamePortfolioAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(MarketingPortfolio)
+class MarketingPortfolioAdmin(admin.ModelAdmin):
+    pass
