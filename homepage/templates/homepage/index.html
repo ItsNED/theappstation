@@ -34,6 +34,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+      // needed when making post requests in Django
+      // we'll use this for the ajax request in script.js
+
+      window.CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <div id="preloader">
@@ -100,22 +106,10 @@
       <div class="clearfix"></div>
     </div>
     <div class="row">
-      <div class="portfolio-items">
-          <!-- {% block gamecontent %}
-          {% endblock %} -->
-          {% for game in games %}
-          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 etc">
-              <div class="portfolio-item">
-              <div class="hover-bg"> <a href="{{ game.image.url }}" title="{{ game.description }}" rel="prettyPhoto">
-                  <div class="hover-text">
-                  <h4>{{ game.title }}</h4>
-                  <p>{{ game.sub_category }}</p>
-                  </div>
-                  <img src="{{ game.image.url }}" class="img-responsive" alt="{{ game.title }}"> </a> </div>
-              </div>
-          </div>
-          {% endfor %}
+      <div class="portfolio-items" id="game-portfolio">
+          {% include 'homepage/game_portfolio.html' %}
       </div>
+      <div class="container"><a id="lazyLoadLink" class="btn btn-primary" href="javascript:void(0);" data-page="2">Load More Posts</a></div>
     </div>
   </div>
 </div>
@@ -257,9 +251,9 @@
 <script type="text/javascript" src="{% static 'js/jquery.parallax.js' %}"></script> 
 <script type="text/javascript" src="{% static 'js/jqBootstrapValidation.js' %}"></script> 
 <script type="text/javascript" src="{% static 'js/contact_me.js' %}"></script> 
-
 <!-- Javascripts
     ================================================== --> 
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('^home/', include('homepage.urls', namespace='homepage', app_name='homepage')),
+    url('^', include('homepage.urls', namespace='homepage', app_name='homepage')),
 ]
 
 if settings.DEBUG:
